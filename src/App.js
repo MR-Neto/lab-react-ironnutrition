@@ -5,6 +5,7 @@ import 'bulma/css/bulma.css';
 import FoodBox from './Components/FoodBox';
 import Order from './Components/Order';
 import Search from './Components/Search';
+import Form from './Components/Form';
 
 
 class App extends Component {
@@ -26,9 +27,18 @@ class App extends Component {
     })
   }
 
-  search = (searchWord) => {
+  createFood = (newFood) => {
+    const { foodList } = this.state;
     this.setState({
-      foundFoods: foods.filter((food) => food.name.toLowerCase().includes(searchWord.toLowerCase()))
+      foodList: [...foodList, newFood],
+    })
+  }
+
+  search = (searchWord) => {
+    console.log("SEARCH");
+    const { foodList } = this.state;
+    this.setState({
+      foundFoods: foodList.filter((food) => food.name.toLowerCase().includes(searchWord.toLowerCase()))
     })
   }
 
@@ -47,15 +57,12 @@ class App extends Component {
     const { foodList, foundFoods } = this.state;
 
     return (
-
       <div className="App">
-
-
         <section className="hero">
           <div className="hero-body">
             <div className="container">
               <h1 className="title">
-                IronNutrition              
+                IronNutrition
               </h1>
             </div>
           </div>
@@ -69,6 +76,7 @@ class App extends Component {
           </div>
           <div className="column is-half">
             <Order list={foodList} deleteOrder={this.deleteOrder} />
+            <Form createFood={this.createFood} />
           </div>
         </div>
       </div>

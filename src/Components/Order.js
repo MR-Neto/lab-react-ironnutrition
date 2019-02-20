@@ -9,7 +9,7 @@ export default class Order extends Component {
         <h2 className="title is-4">Today's Food</h2>
         <ul>
           {(list.filter((food) => food.quantity > 0)).map((food, index) => {
-            return <li>{food.quantity} {food.name} = {Number(food.quantity) * Number(food.calories)} cal  <button onClick={()=>{
+            return <li key={index}>{food.quantity} {food.name} = {Number(food.quantity) * Number(food.calories)} cal  <button onClick={()=>{
               deleteOrder(food.name);
             }} > Delete </button></li>;
           })}

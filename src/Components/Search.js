@@ -23,11 +23,7 @@ export default class Search extends Component {
 
     return (
       <div className="container">
-        <input className="input is-info" type="text" name="" id=""
-          value={searchWord}
-          onChange={this.handlerSearch}
-
-        />
+        <input className="input is-info" type="text" value={searchWord} onChange={this.handlerSearch}/>
       </div>
     )
   }
